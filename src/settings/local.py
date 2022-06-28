@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'api.apps.ApiConfig',
     'hostel.apps.HostelConfig',
-    'management.apps.ManagementConfig',
 ]
 
 PHONENUMBER_DB_FORMAT = "NATIONAL"

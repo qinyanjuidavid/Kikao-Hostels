@@ -17,8 +17,9 @@ class Hostel(TrackingModel):
         _('gender'), choices=gender_choices,
         max_length=20, default="Male"
     )
-    added_by = models.ForeignKey(Administrator,
-                                 on_delete=models.DO_NOTHING)
+    added_by = models.ForeignKey(Administrator, blank=True,
+                                 on_delete=models.DO_NOTHING,
+                                 null=True)
 
     def __str__(self):
         return self.hostel_name
@@ -45,8 +46,9 @@ class Rooms(TrackingModel):
     hostel = models.ForeignKey(
         Hostel,
         on_delete=models.CASCADE)
-    added_by = models.ForeignKey(Administrator,
-                                 on_delete=models.DO_NOTHING)
+    added_by = models.ForeignKey(Administrator, blank=True,
+                                 on_delete=models.DO_NOTHING,
+                                 null=True)
 
     def __str__(self):
         return self.room_name
@@ -66,6 +68,9 @@ class Space(TrackingModel):
     price = models.FloatField(_("price"), default=0.00)
     vacant = models.BooleanField(_("vacant"), default=False)
     reserved = models.BooleanField(_("reserved"), default=False)
+    added_by = models.ForeignKey(Administrator, blank=True,
+                                 on_delete=models.DO_NOTHING,
+                                 null=True)
 
     def __str__(self):
         return self.space_name
