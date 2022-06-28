@@ -73,15 +73,14 @@
 - checkout_date
 - paid
 - accepted
-- cleared
 
 ## Todo's
 
-- Students and Administrators can register
-- Account Activation can take place
-- Students and Administrators can login
-- Students and Administrator can view and update their profiles
-- Password Reset can take place
+- Students and Administrators can register (Done)
+- Account Activation can take place (Done)
+- Students and Administrators can login (Done)
+- Students and Administrator can view and update their profiles (Done)
+- Password Reset can take place (Done)
 - Administrator can view all students and Administrators and can update their details
 - Administrators can create hostel
 - Administrator can create room
