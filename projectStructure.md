@@ -82,8 +82,8 @@
 - Students and Administrator can view and update their profiles (Done)
 - Password Reset can take place (Done)
 - Administrator can view all students and Administrators and can update their details
-- Administrators can create hostel
-- Administrator can create room
-- Administrator can create space
-- Administrator can book for students
-- Students can book hostel and view the hostel that they have booked
+- Administrators can create hostel(Done)
+- Administrator can create room(Done)
+- Administrator can create space(Done)
+- Administrator can book for students(Done)
+- Students can book hostel and view the hostel that they have booked(Done)
