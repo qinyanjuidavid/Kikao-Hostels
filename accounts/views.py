@@ -162,8 +162,11 @@ class RequestPasswordResetEmail(ModelViewSet):
     http_method_names = ["post", ]
 
     def create(self, request, *args, **kwargs):
-        self.get_serializer(data=request.data)
-        email = request.data["email"]
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        email = serializer.validated_data["email"]
+
+        # email = request.data["email"]
         if User.objects.filter(email=email):
             user = User.objects.get(email=email)
             if user.is_active:
@@ -261,7 +264,8 @@ class AdministratorProfileAPIView(ModelViewSet):
         serializer.save()
 
         userSerializer = UserSerializer(
-            request.user, data=request.data["user"]
+            request.user,
+            data=request.data["user"]
         )
         userSerializer.is_valid(raise_exception=True)
         userSerializer.save()

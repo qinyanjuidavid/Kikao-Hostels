@@ -49,7 +49,7 @@ class RegisterSerializer(serializers.ModelSerializer):
         model = User
         fields = [
             "username", "email", "phone", "full_name",
-            "role",
+            # "role",
         ]
 
     def create(self, validated_data):
@@ -62,7 +62,7 @@ class RegisterSerializer(serializers.ModelSerializer):
                 phone=validated_data["phone"],
                 is_active=False,
                 full_name=validated_data["full_name"],
-                role=validated_data['role']
+                role="Administrator"
             )
             user.save()
         return user
@@ -145,7 +145,7 @@ class AdministratorProfileSerializer(CountryFieldMixin, serializers.ModelSeriali
         model = Administrator
         fields = ("id", "user", "bio", "id_no", "nationality",
                   "town", "estate", "gender", "date_of_birth",
-                  "job_id", "timestamp", "created_at", "updated_at",
+                  "job_id", "timestamp",
                   "available", "profile_picture"
                   )
         read_only_fields = ("id", )
@@ -155,10 +155,10 @@ class StudentProfileSerializer(CountryFieldMixin, serializers.ModelSerializer):
     user = UserSerializer(read_only=True)
 
     class Meta:
-        model = Administrator
+        model = Student
         fields = ("id", "user", "bio", "id_no", "nationality",
                   "town", "estate", "gender", "date_of_birth",
-                  "course", "timestamp", "created_at", "updated_at",
+                  "course", "timestamp",
                   "admission_no", "profile_picture"
                   )
         read_only_fields = ("id", "admission_no")
