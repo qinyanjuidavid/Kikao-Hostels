@@ -2,7 +2,7 @@ from hostel.models import Hostel, HostelBooking, Rooms, Space
 from rest_framework import serializers
 
 
-class HostelSerializer(serializers.ModelSerializier):
+class HostelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Hostel
         fields = ("id", "hostel_name", "gender",
@@ -21,15 +21,19 @@ class RoomSerializer(serializers.ModelSerializer):
 
 
 class SpaceSerializer(serializers.ModelSerializer):
+    price = serializers.FloatField(required=True)
+
     class Meta:
         model = Space
-        fields = ("id", "space_name", "room",
+        fields = ("id", "space_name", "room", "hostel",
                   "price", "vacant", "reserved", "added_by",
                   "created_at", "updated_at")
         read_only_fields = ("id",)
 
 
 class HostelBookingSerializer(serializers.ModelSerializer):
+    space = SpaceSerializer(read_only=True)
+
     class Meta:
         model = HostelBooking
         fields = ("space", "student", "admin",

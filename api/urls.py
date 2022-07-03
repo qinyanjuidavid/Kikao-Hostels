@@ -1,3 +1,5 @@
+from posixpath import basename
+from hostel.views import BookedHostels, CourseAPIView, HostelAPIView, HostelBookingAPI, RoomAPIView, SpaceAPIVIew
 from rest_framework.routers import SimpleRouter
 from django.views.generic import TemplateView
 from django.urls import path
@@ -24,7 +26,13 @@ routes.register('admin/profile', AdministratorProfileAPIView,
                 basename="admin-profile")
 routes.register('student/profile', StudentProfileAPIView,
                 basename="student-profile")
-
+# Hostel Routes
+routes.register("course", CourseAPIView, basename="course")
+routes.register("hostel", HostelAPIView, basename="hostel")
+routes.register("room", RoomAPIView, basename="room")
+routes.register("space", SpaceAPIVIew, basename="space")
+routes.register("hostel-booking", HostelBookingAPI, basename="hostel-booking")
+routes.register("booked-hostel", BookedHostels, basename="booked-hostel")
 urlpatterns = [
     *routes.urls,
     path('activate/', VerifyEmail,

@@ -143,7 +143,7 @@ def VerifyEmail(request):
             messages.info(request,
                           """Your Account has already been activated.
                           You can now login and
-                          book an appointment today.
+                          book a room today.
                         """)
     except jwt.ExpiredSignatureError as identifier:
         messages.warning(request,

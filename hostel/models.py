@@ -65,8 +65,10 @@ class Space(TrackingModel):
     )
     room = models.ForeignKey(Rooms,
                              on_delete=models.CASCADE)
+    hostel = models.ForeignKey(Hostel, on_delete=models.PROTECT,
+                               blank=True, null=True)
     price = models.FloatField(_("price"), default=0.00)
-    vacant = models.BooleanField(_("vacant"), default=False)
+    vacant = models.BooleanField(_("vacant"), default=True)
     reserved = models.BooleanField(_("reserved"), default=False)
     added_by = models.ForeignKey(Administrator, blank=True,
                                  on_delete=models.DO_NOTHING,
@@ -82,7 +84,7 @@ class Space(TrackingModel):
 
 class HostelBooking(TrackingModel):
     space = models.ForeignKey(Space, on_delete=models.PROTECT)
-    student = models.OneToOneField(Student,
+    student = models.OneToOneField(Student, blank=True, null=True,
                                    on_delete=models.DO_NOTHING)
     admin = models.ForeignKey(Administrator,
                               on_delete=models.DO_NOTHING,
