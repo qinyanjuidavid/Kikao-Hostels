@@ -1,2 +1,2 @@
 # Hostel-Management-API
-Simple Rest API for hostel management
+Kikao Hostels is a Hostel management API
